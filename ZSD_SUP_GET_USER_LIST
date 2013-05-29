@@ -1,0 +1,25 @@
+  data : lt_sup_roles type standard table of ztsd_sup_roles,
+        ls_return type bapireturn.
+
+  select *
+  from ztsd_sup_roles
+  into table lt_sup_roles.
+  
+
+  if lt_sup_roles[] is not initial.
+
+    select uname
+    from agr_users into table users
+    for all entries in lt_sup_roles
+    where agr_name = lt_sup_roles-value.
+
+  endif.
+
+
+  if users[] is initial.
+
+    return-type = 'E'.
+    return-type = 'No data found'.
+    return-log_msg_no = '098'.
+
+  endif.
