@@ -1,4 +1,10 @@
-  data : lt_sup_roles type standard table of ztsd_sup_roles,
+*"  EXPORTING
+*"     VALUE(RETURN) LIKE  BAPIRETURN STRUCTURE  BAPIRETURN
+*"  TABLES
+*"      USERS STRUCTURE  /VIRSA/USERS
+
+
+data : lt_sup_roles type standard table of ztsd_sup_roles,
         ls_return type bapireturn.
 
   select *
